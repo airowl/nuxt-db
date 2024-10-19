@@ -1,21 +1,12 @@
-
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { createMany } from "./itemSeed.ts";
 
 console.log('START');
 
 async function main() {
 
-    const item  = await prisma.item.create({
-        data: {
-            slug: 'asdasd-asdasd',
-            title: 'Alice',
-            body: 'foo'
-        },
-    });
-    
-    console.log(item);
+    const resItem = await createMany(10);
+
+    console.log(await resItem);
 }
 
 main()
@@ -23,7 +14,7 @@ main()
         console.error(e)
     })
     .finally(async () => {
-        await prisma.$disconnect()
+        console.log('finish');
     })
 
 console.log('END');
