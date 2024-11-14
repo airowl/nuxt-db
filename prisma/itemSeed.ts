@@ -1,12 +1,7 @@
 import { faker } from '@faker-js/faker';
+import type { ItemInterface } from '~/server/controllers/itemsController';
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
-
-interface ItemInterface {
-    slug: string,
-    title: string,
-    body: string
-}
 
 export async function createMany(n:number){
 
